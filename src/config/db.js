@@ -2,7 +2,7 @@ import mysql from "mysql2/promise";
 // ============================
 //  Conexão com o MariaDB
 // ============================
-export const db = await mysql.createConnection({
+ const db = await mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "root",
@@ -11,3 +11,5 @@ export const db = await mysql.createConnection({
 });
 
 console.log("✅ Conectado ao banco de dados dblivraria!");
+
+export default db

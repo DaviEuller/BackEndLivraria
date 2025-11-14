@@ -5,7 +5,7 @@ import db from "../config/db.js"
 // ============================
 
 
- export async function criarUsuario (req, res) {
+ export async function criarLivro (req, res) {
   try {
     const { nome, email, senha } = req.body;
     if (!nome || !email || !senha)
@@ -23,9 +23,9 @@ import db from "../config/db.js"
 };
 
 
-  export async function listarUsuarios (req, res)  {
+  export async function listarLivros (req, res)  {
   try {
-    const [rows] = await db.execute("SELECT * FROM usuarios");
+    const [rows] = await db.execute("SELECT * FROM livros");
     res.json(rows);
   } catch (err) {
     res.status(500).json({ erro: err.message });
@@ -33,7 +33,7 @@ import db from "../config/db.js"
 };
 
 
-  export async function obterUsuario (req, res) {
+  export async function obterLivro (req, res) {
   try {
     const [rows] = await db.execute("SELECT * FROM usuarios WHERE id = ?", [
       req.params.id,
@@ -46,7 +46,7 @@ import db from "../config/db.js"
   }
 };
 
-   export async function atualizarUsuario (req, res) {
+   export async function atualizarLivro (req, res) {
   try {
     const { nome, email, senha } = req.body;
     await db.execute(
@@ -60,7 +60,7 @@ import db from "../config/db.js"
 };
 
 
-  export async function DeletarUsuario (req, res) {
+  export async function DeletarLivro (req, res) {
   try {
     await db.execute("DELETE FROM usuarios WHERE id = ?", [req.params.id]);
     res.json({ mensagem: "Usuário deletado com sucesso!" });
